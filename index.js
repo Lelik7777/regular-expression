@@ -52,11 +52,11 @@ console.log(str10.replace(/2\+*3/g, '!'));
 
 let str11 = '*+ *q+ *qq+ *qqq+ *qqq qqq+';
 //find  строки '*q+', '*qq+', '*qqq+', не захватив остальные.
-console.log(str11.replace(/\*q+\+/g,'!'));
+console.log(str11.replace(/\*q+\+/g, '!'));
 
 let str12 = '[abc] {abc} abc (abc) [abc] [s]';
 //find  строки в квадратных скобках и заменят их на '!'.
-console.log(str12.replace(/\[abc\]/g,'!'));
+console.log(str12.replace(/\[abc\]/g, '!'));
 
 ///////////////////////////////////////////////////////////////////
 //фигурные скобки для указания количества повторений для элемента,после которого идут эти скобки
@@ -68,21 +68,21 @@ let res1 = str14.replace(/xa{0,3}x/g, '!');//'! ! ! !'
 
 let str15 = 'aa aba abba abbba abbbba abbbbba';
 //find  'abba', 'abbba', 'abbbba' и только их.
-console.log(str15.replace(/ab{2,4}a/g,'!'));
+console.log(str15.replace(/ab{2,4}a/g, '!'));
 //find 'aba', в которых 'b' встречается менее 3-х раз (включительно).
-console.log(str15.replace(/ab{1,2}a/g,'!'));
+console.log(str15.replace(/ab{1,2}a/g, '!'));
 //find строки вида 'aba', в которых 'b' встречается более 4-х раз (включительно).
-console.log(str15.replace(/ab{4,}a/g,'!'));
+console.log(str15.replace(/ab{4,}a/g, '!'));
 
 ////////////////////////////////////////////////////////////////////
 //ограничение жадности в  регулярках с помощью оператора ?
 //пример жадности,когда возвращает не то,что ожидали))
 let str16 = 'aeeex zzz x kkk';
-console.log(str16.replace(/a.+x/g,'!'));//'! kkk'
+console.log(str16.replace(/a.+x/g, '!'));//'! kkk'
 
 let str17 = 'aba accca azzza wwwwa aaa';
 //find  все строки по краям которых стоят буквы 'a', и заменит каждую из них на '!'. Между буквами a может быть любой символ (кроме 'a').
-console.log(str17.replace(/a.+?a/g,'!'));
+console.log(str17.replace(/a.+?a/g, '!'));
 
 ///////////////////////////////////////////////////////////////////
 // группы символов
@@ -96,65 +96,117 @@ console.log(str17.replace(/a.+?a/g,'!'));
 
 let str18 = '1 12 123';
 //заменить все цифры
-console.log(str18.replace(/\d/g,'!'));// ! !! !!!
+console.log(str18.replace(/\d/g, '!'));// ! !! !!!
 
 let str19 = '1 12 123 123abc @@@';
 //заменить все числа
-console.log(str19.replace(/\d+/g,'!'));// ! ! ! !abc @@@
+console.log(str19.replace(/\d+/g, '!'));// ! ! ! !abc @@@
 
 
 let str20 = 'a1a a2a a3a a4a a5a aba aca';
 //find строки, в которых по краям стоят буквы 'a', а между ними одна цифра.
-console.log(str20.replace(/a\da/g,'!'));
+console.log(str20.replace(/a\da/g, '!'));
 let str21 = 'aa a1a a22a a333a a4444a a55555a aba aca aaa';
 //find строки, в которых по краям стоят буквы 'a', а между ними любое количество цифр.
-console.log(str21.replace(/a\d+a/g,'!'));
+console.log(str21.replace(/a\d+a/g, '!'));
 //find строки, в которых по краям стоят буквы 'a', а между ними любое количество цифр (в том числе и ноль цифр, то есть строка 'aa').
-console.log(str21.replace(/a\d*a/g,'!'));
+console.log(str21.replace(/a\d*a/g, '!'));
 let str22 = 'avb a1b a2b a3b a4b a5b abb acb';
 //find строки следующего вида: по краям стоят буквы 'a' и 'b', а между ними - не число.
-console.log(str22.replace(/a\D+?b/g,'!'));
+console.log(str22.replace(/a\D+?b/g, '!'));
 let str23 = 'ave a#b a2b a$b a4b a5b a-b acb';
 //find строки следующего вида: по краям стоят буквы 'a' и 'b', а между ними - не буква и не цифра.
-console.log(str23.replace(/a\Wb/g,'!'));
+console.log(str23.replace(/a\Wb/g, '!'));
 let str24 = 'ave a#a a2a a$a a4a a5a a-a aca';
 //find которая заменит все пробелы на '!'.
-console.log(str24.replace(/\s/g,'!'));
+console.log(str24.replace(/\s/g, '!'));
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //Наборы символов в регулярных выражениях JavaScript
 
 let str25 = 'aba aea aca aza axa';
 //replace по следующему шаблону: по краям стоят буквы 'a', а между ними - буква 'b', 'e' или 'x'.
-console.log(str25.replace(/a[bex]a/g,'!'));
+console.log(str25.replace(/a[bex]a/g, '!'));
 let str26 = 'a1a a3a a7a a9a aba';
 //find по следующему шаблону: по краям стоят буквы 'a', а между ними - цифра от 3-х до 6-ти.
-console.log(str26.replace(/a[3-6]a/g,'!'));
+console.log(str26.replace(/a[3-6]a/g, '!'));
 let str27 = 'aba aea afa aha aga';
 //find по следующему шаблону: по краям стоят буквы 'a', а между ними - буква от a до g.
-console.log(str27.replace(/a[a-g]a/g,'!'));
+console.log(str27.replace(/a[a-g]a/g, '!'));
 let str28 = 'aba aea afa aha aga';
 //find по следующему шаблону: по краям стоят буквы 'a', а между ними - буква от a до f и от j до z.
-console.log(str28.replace(/a[a-fj-z]a/g,'!'));
+console.log(str28.replace(/a[a-fj-z]a/g, '!'));
 let str29 = 'aAXa aeffa aGha aza ax23a a3sSa';
 //find по следующему шаблону: по краям стоят буквы 'a', а между ними - маленькие латинские буквы, не затронув остальных.
-console.log(str29.replace(/a[a-z]+a/g,'!'));
+console.log(str29.replace(/a[a-z]+a/g, '!'));
 let str30 = 'aAXa aeffa aGha aza ax23a a3sSa';
 //find  по следующему шаблону: по краям стоят буквы 'a', а между ними - маленькие латинские буквы и цифры, не затронув остальных.
-console.log(str30.replace(/a[a-z0-9]+a/g,'!'));
+console.log(str30.replace(/a[a-z0-9]+a/g, '!'));
 
 //////////////////////////////////////////////////////////////////////
 //Инвертирование наборов символов в регулярках
 
 //Напишите регулярку, которая найдет строки по шаблону: цифра '1', затем символ не 'e' и не 'x', цифра '2'.
-const str31='1342 1e2 142 1r2'
-console.log(str31.replace(/1[^ex]2/g,'!'));
+const str31 = '1342 1e2 142 1r2'
+console.log(str31.replace(/1[^ex]2/g, '!'));
 //Напишите регулярку, которая найдет строки по шаблону: буква 'x', затем НЕ цифра от 2 до 7, буква 'z'.
-const str32='xz xez xsssz x23z';
-console.log(str32.replace(/x[^2-7]+?z/,'!'));
+const str32 = 'xz xez xsssz x23z';
+console.log(str32.replace(/x[^2-7]+?z/, '!'));
 //Напишите регулярку, которая найдет строки по шаблону: буква 'x', затем НЕ большая латинская буква от 1 и более раз, буква 'z'.
-const str33='xADZz xAddsz xsddz';
-console.log(str33.replace(/x[^A-Z]+z/,'!'));
+const str33 = 'xADZz xAddsz xsddz';
+console.log(str33.replace(/x[^A-Z]+z/, '!'));
 //Напишите регулярку, которая найдет строки по шаблону: буква 'x', затем НЕ большая маленькая латинская буква и не цифра от 1 до 5 от 1 и более раз, буква 'z'.
-const str34='xz xaz xAz xsssz x$z x##%%z';
-console.log(str34.replace(/x[^a-zA-Z1-5]+z/,'!'))
+const str34 = 'xz xaz xAz xsssz x$z x##%%z';
+console.log(str34.replace(/x[^a-zA-Z1-5]+z/, '!'));
+
+/////////////////////////////////////////////////////////////////
+//Особенности кириллицы в регулярках JavaScript
+let str35 = 'wйw wяw wёw wqw'
+//Напишите регулярку, которая найдет строки по шаблону: по краям стоят буквы 'w', а между ними - буква кириллицы.
+
+console.log(str35.replace(/w[а-яё]w/g, '!'));
+let str36 = 'ааа ббб ёёё ззз ййй ААА БББ ЁЁЁ ЗЗЗ ЙЙЙ';
+//find все слова по шаблону: любая кириллическая буква любое количество раз.
+console.log(str36.replace(/[а-яёА-ЯЁ]+/g, '!'));
+
+//////////////////////////////////////////////////////////////
+//Спецсимволы внутри квадратных скобок в JavaScript
+let str37 = 'aba aea aca aza axa a.a a+a a*a';
+//найдет строки 'a.a', 'a+a', 'a*a', не затронув остальных.
+console.log(str37.replace(/a[.+*]a/g, '!'));
+let str38 = 'xaz x.z x3z x@z x$z xrz';
+// найдет строки по шаблону: буква 'x', затем НЕ точка, НЕ собака, и НЕ доллар, а потом буква 'z'.
+console.log(str38.replace(/x[^.@$]z/g, '!'));
+
+///////////////////////////////////////////////////////////////
+//Группы символов внутри квадратных скобок JavaScript
+const str39 = '123 #ds 1.23 34.43 asd @ya '
+//Напишите регулярку, которая найдет строки по шаблону: цифра или точка от 1 и более раз.
+console.log(str39.replace(/[\d.]+/g, '!'));
+const str40 = 'aed 12.33 14 23@ya hello32';
+//Напишите регулярку, которая найдет строки по шаблону: не цифра и не буква от 'a' до 'g' от 3 до 7 раз.
+console.log(str40.replace(/[^\da-g]{3,7}/g, '!'));
+console.log('123 12 1234 1345 12345'.replace(/\d{3,4}/g, '0'));
+
+//////////////////////////////////////////////////////////////
+//Спецсимволы-исключения внутри квадратных скобок
+let str41 = 'x[]z x{}z x.z x()z';
+// все слова по шаблону: буква 'x', затем любое количество любых скобок, затем буква 'z'.
+console.log(str41.replace(/x[\[\]\{\}\(\))]+z/g, '!'));
+let str42 = '[abc] {abc} abc (abc) [abc]';
+//строки в любых скобках и заменят их на '!'.
+console.log(str42.replace(/[\[\{\(][a-z]+[\]\}\)]/g, '!'));
+
+////////////////////////////////////////////////////////////////
+//Символ каретки внутри квадратных скобок регулярок
+let str43 = '^xx axx ^zz bkk @ss';
+//find строки по шаблону: шляпка или собака, а затем две латинских буквы.
+console.log(str43.replace(/[@^][a-z]{2}/g,'!'));
+//find строки по шаблону: НЕ шляпка и не собака, а затем две латинских буквы.
+console.log(str43.replace(/[^@^][a-z]{2,3}/g,' !'));
+let str44 = '^xx axx ^zz bkk';
+//find  строки по шаблону: НЕ шляпка, а затем две латинских буквы.
+console.log(str44.replace(/[^\^][a-z]{3}/g,'!'));
+
+//////////////////////////////////////////////////////////////////
+//Особенности дефиса внутри квадратных скобок
