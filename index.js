@@ -279,23 +279,55 @@ console.log(str53.match(/(\d{2})\.(\d{2})\.(\d{4})/));
 //Дана строка:
 let str54 = '12 34 56 78';
 //Поменяйте местами цифры во всех двухзначных числах.
-console.log(str54.replace(/(\d)(\d)/g,'$2$1'));
+console.log(str54.replace(/(\d)(\d)/g, '$2$1'));
 //Дана строка с датой:
 let str55 = '31.12.2025';
 //Преобразуйте эту дату в '2025.12.31'.
-console.log(str55.replace(/(\d{2})\.(\d{2})\.(\d{4})/g,'$3.$2.$1'));
+console.log(str55.replace(/(\d{2})\.(\d{2})\.(\d{4})/g, '$3.$2.$1'));
 
 ///////////////////////////////////////////////////////////
 //Карманы по умолчанию в методе replace в JavaScript
 //дана строка
 let str56 = 'a1b2c3';
 //Напишите регулярку, которая рядом с каждой цифрой напишет такую же.
-console.log(str56.replace(/\d/g,"$&$&"));
+console.log(str56.replace(/\d/g, "$&$&"));
 //have string
 let str57 = 'sss site.ru zzz site.com kkk';
 //Замените домены на ссылки вида:
 //<a href="http://site.ru">site.ru</a>
-console.log(str57.replace(/[a-z]{4}\.[a-z]{2,3}/g,'<a href="http://$&">$&</a>'));
+console.log(str57.replace(/[a-z]{4}\.[a-z]{2,3}/g, '<a href="http://$&">$&</a>'));
 
 ////////////////////////////////////////////////////////////
 //Карманы в самой регулярке в JavaScript
+let str58 = 'aaa bbb ccc xyz';
+//find все подстроки, в которых есть три одинаковые буквы подряд.
+console.log(str58.replace(/([a-z])\1\1/g, '!'));
+let str59 = 'a aa aaa aaaa aaaaa';
+//find  все подстроки, в которых есть две и более одинаковые буквы подряд.
+console.log(str59.replace(/([a-z])\1+/g, '!'));
+let str60 = 'aaa aaa bbb bbb ccc ddd';
+//все подстроки, в которых есть два одинаковых слова подряд.
+//??????????????????
+console.log(str60.replace(/(([a-z])\1+)\2/g, '!'));
+
+///////////////////////////////////////////////////////////////
+//Позитивный и негативный просмотр в JavaScript
+let str61 = 'func1() func2() func3()';
+//Получите массив имен функций из строки.
+console.log(str61.match(/[a-z]{4}\d(?=())/g));
+let str62 = '<a href="" class="eee" id="zzz">';
+//Получите массив имен атрибутов этого тега.
+console.log(str62.match(/[a-z]+(?==")/g));
+
+////////////////////////////////////////////////////////
+//Коллбэк в методе replace в регулярках JavaScript
+let str63 = '2 3 4 5';
+
+console.log(str63.replace(/\d+/g, function (match) {
+    return match ** 2;
+}));
+
+let str64 = '2+3= 4+5= 6+7=';
+console.log(str64.replace(/(\d+)\+(\d+)=/g, function (match0, match1, match2) {
+    return match0 + (+match1 + (+match2));
+}));
